@@ -2,6 +2,7 @@ package vn.edu.vhu.ltdd.a9listview;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import java.util.List;
  * Trong đó getView là nơi mọi việc thực sự diễn ra.
  */
 public class MonAnAdapter extends BaseAdapter {
+
+    private static final String TAG = "A9_241A010541";
 
     /** Giữ sẵn tham chiếu tới các View của một dòng để khỏi findViewById lại. */
     private static class ViewHolder {
@@ -63,6 +66,9 @@ public class MonAnAdapter extends BaseAdapter {
             holder.tvMoTa = convertView.findViewById(R.id.tvMoTa);
             holder.tvGia = convertView.findViewById(R.id.tvGia);
             convertView.setTag(holder);          // gắn kèm vào dòng để lần sau lấy ra
+            
+            // Thí nghiệm bắt buộc: Đếm số lần inflate dòng mới
+            Log.d(TAG, "Inflate dòng mới tại position: " + position);
         } else {
             // Dòng này vừa cuộn khỏi màn hình → dùng lại, chỉ cần đổi nội dung
             holder = (ViewHolder) convertView.getTag();
